@@ -1,6 +1,6 @@
 import './Blog.css'
 
-import { Link, Route } from 'react-router-dom'
+import { NavLink, Route, Switch } from 'react-router-dom'
 import React, { Component } from 'react'
 
 import NewPost from './NewPost/NewPost'
@@ -14,16 +14,20 @@ class Blog extends Component {
           <nav>
             <ul>
               <li>
-                <Link to='/'>Home</Link>
+                <NavLink exact to='/posts/' activeClassName='custom-active'>
+                  Posts
+                </NavLink>
               </li>
               <li>
-                <Link to='/new-post'>New Post</Link>
+                <NavLink to='/new-post'>New Post</NavLink>
               </li>
             </ul>
           </nav>
         </header>
-        <Route path='/' exact component={Posts} />
-        <Route path='/new-post' component={NewPost} />
+        <Switch>
+          <Route path='/new-post' component={NewPost} />
+          <Route path='/posts' component={Posts} />
+        </Switch>
       </div>
     )
   }
