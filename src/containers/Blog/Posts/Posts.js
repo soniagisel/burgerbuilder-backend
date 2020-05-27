@@ -3,7 +3,7 @@ import './Posts.css'
 import React, { Component } from 'react'
 
 import FullPost from '../FullPost/FullPost'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import Post from '../../../components/Post/Post'
 import { Route } from 'react-router-dom'
 import axios from '../../../axios'

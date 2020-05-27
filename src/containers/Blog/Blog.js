@@ -1,12 +1,16 @@
 import './Blog.css'
 
-import { NavLink, Route, Switch } from 'react-router-dom'
+import { NavLink, Redirect, Route, Switch } from 'react-router-dom'
 import React, { Component } from 'react'
 
 import NewPost from './NewPost/NewPost'
 import Posts from './Posts/Posts'
 
 class Blog extends Component {
+  state = {
+    auth: false,
+  }
+
   render() {
     return (
       <div className='Blog'>
@@ -25,8 +29,10 @@ class Blog extends Component {
           </nav>
         </header>
         <Switch>
-          <Route path='/new-post' component={NewPost} />
+          {this.state.auth ? <Route path='/new-post' component={NewPost} /> : null}
           <Route path='/posts' component={Posts} />
+          <Route render={() => <h1>Not Found!</h1>} />
+          {/* <Redirect from='/' to='/posts' />*/}
         </Switch>
       </div>
     )
